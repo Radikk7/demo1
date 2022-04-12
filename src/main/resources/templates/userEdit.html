@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/edit}"  method="post" >
+
+    <input type="text" name="id" th:value="${users.id}" readonly="readonly" > Id <br>
+    <input type="text" name="password" th:value="${users.password}"> Password  <br>
+    <input type="text" name="username" th:value="${users.username}"> Username <br>
+
+
+    <input type="checkbox"  name="admin" value="admin">
+    <label> Admin</label><br>
+
+    <input type="checkbox" name="user" value="user">
+    <label > User</label><br>
+
+    <input type="submit" name="enter"> Enter <br>
+
+
+</form>
+
+</body>
+</html>

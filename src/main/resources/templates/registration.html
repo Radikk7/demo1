@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Add_News</h1>
+<form th:action="@{/postmaping}" method="post" enctype="multipart/form-data">
+    <p>Title: <input type="text" name="title" /></p> <br>
+    <input type="file" name="file" > <br>
+    <textarea  name="description"
+              rows="5" cols="33">
+</textarea><br> <br>
+    <select name ="category" >
+        <option value="world">World </option>
+        <option value="russia">Russia </option>
+        <option value="ukraine">Ukraine </option>
+        <option value="war">War </option>
+        <option value="sport">Sport </option>
+        <option value="NATO">NATO </option>
+    </select>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+ </body>
+</html>

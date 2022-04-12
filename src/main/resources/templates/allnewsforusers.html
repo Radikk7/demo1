@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .category{
+            padding: 50px;
+            background: #DC143C;
+            position: fixed; top: 8%; left: 30%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        body{
+            color: black;
+        }
+    </style>
+    <style>
+        .word{
+            padding: 50px;
+            background: #00FF00;
+            position: fixed; top: 8%; left: 52%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        body{
+            color: black;
+        }
+    </style>
+
+    <style>
+        .date{
+            padding: 50px;
+            background: #00FF00;
+            position: fixed; top: 8%; left: 72%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        body{
+            color: black;
+        }
+    </style>
+
+
+</head>
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
+
+<a href="/newsmaping" > Добавление</a>
+<fieldset class="category">
+    <form th:action="@{/filtercategory}" method="post">
+        <input type="text" name="category">Category </input> <br>
+        <input type="submit" value="Enter"/>
+    </form>
+</fieldset>
+
+
+<fieldset class="word">
+    <form th:action="@{/filterword}" method="post">
+        <input type="text" name="word">SearchWord </input> <br>
+        <input type="submit" value="Enter"/>
+    </form>
+</fieldset>
+
+<fieldset class="user">
+    <form th:action="@{/userfilter}" method="post">
+        <input type="text" name="userName">UserName </input> <br>
+        <input type="submit" value="Enter"/>
+    </form>
+</fieldset>
+
+
+<fieldset class="date">
+    <form th:action ="@{/datefilter}" method="post">
+        <input type="date" name="date1">Before </input> <br>
+        <input type="date" name="date2">After </input> <br>
+        <input type="submit" value="Enter"/>
+    </form>
+</fieldset>
+
+<div style="width: 1200px;margin-left: auto;margin-right: auto">
+
+    <h1>Количество совпадений </h1>
+    <p th:text="'' + ${size} + '!'" />
+
+    <table cellpadding="10">
+        <tr>
+            <th>title</th>
+            <th>description</th>
+            <th>category</th>
+            <th>user</th>
+            <th>timestamp</th>
+        </tr>
+        <th:block th:each="news : ${listnews}">
+            <tr>
+                <td th:text="${news.title}">...</td>
+                <td th:text="${news.description}">...</td>
+                <td th:text="${news.category}">...</td>
+                <td th:text="${news.userName}">...</td>
+                <td th:text="${news.timestamp}">...</td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>
